@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">
+          <span class="navbar-brand text-danger">Accident Detection Team</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#NavbarScroll"
+          aria-controls="NavbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="NavbarScroll">
+          <ul class="navbar-nav ms-auto navbar-nav-scroll">
+            <li class="nav-item h-class px-2">
+              <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="" class="nav-link">About</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="monitoring.html" class="nav-link">Live Monitoring</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="" class="nav-link">Report Incident</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="signup.html" class="nav-link">SignUp for Admins</a>
+            </li>
+            <li class="nav-item h-class px-2">
+              <a href="login.html" class="nav-link">Login Admins</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <!-- Left side: Video section -->
+        <div class="col-md-6">
+          <div class="card shadow-lg">
+            <div class="card-header bg-dark text-white text-center">
+              <mark style="background-color: yellow;">Live Camera Feed</mark>
+            </div>
+            <div class="card-body text-center">
+              <img
+                id="cctvFeed"
+                src="http://81.60.215.31/cgi-bin/viewer/video.jpg"
+                class="img-fluid rounded shadow-lg border border-dark"
+                style="max-height: 400px;"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side: Results section -->
+        <div class="col-md-6">
+          <div class="card shadow-lg" id="resultsCard">
+            <div class="card-header">Detection Results</div>
+            <div class="card-body">
+              <ul class="list-group" id="resultsList">
+                <li class="list-group-item">No incidents detected</li>
+                <!-- Dynamically add results here -->
+              </ul>
+            </div>
+            <button type="button" class="btn btn-danger mt-3 mb-3">Accident Detected</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script for refreshing CCTV image -->
+    <script>
+      setInterval(() => {
+        document.getElementById("cctvFeed").src =
+          "http://81.60.215.31/cgi-bin/viewer/video.jpg?r=" + new Date().getTime();
+      }, 1000);
+    </script>
+  </body>
+</html>
